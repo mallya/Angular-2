@@ -9,17 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var EventsAppComponent = (function () {
-    function EventsAppComponent() {
+var router_1 = require('@angular/router');
+var CreateEventComponent = (function () {
+    function CreateEventComponent(router) {
+        this.router = router;
     }
-    EventsAppComponent = __decorate([
+    CreateEventComponent.prototype.cancel = function () {
+        this.router.navigate(['/events']);
+    };
+    CreateEventComponent = __decorate([
         core_1.Component({
-            selector: 'events-app',
-            template: "\n<nav-bar></nav-bar>\n<router-outlet></router-outlet>\n"
+            template: "\n<h1>New Event</h1>\n<hr>\n<div class=\"col-md-6\">\n<h3>[Creare ]</h3>\n<br/>\n<br/>\n<button type=\"submit\" class=\"btn btn-primary\">Save</button>\n<button type=\"button\" class=\"btn btn-default\" (click)=\"cancel()\">Cancel</button>\n</div>\n"
         }), 
-        __metadata('design:paramtypes', [])
-    ], EventsAppComponent);
-    return EventsAppComponent;
+        __metadata('design:paramtypes', [router_1.Router])
+    ], CreateEventComponent);
+    return CreateEventComponent;
 }());
-exports.EventsAppComponent = EventsAppComponent;
-//# sourceMappingURL=events-app.component.js.map
+exports.CreateEventComponent = CreateEventComponent;
+//# sourceMappingURL=create-event.component.js.map
