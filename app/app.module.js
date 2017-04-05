@@ -37,11 +37,20 @@ var AppModule = (function () {
                 _404_component_1.Error404Component,
                 navbar_component_1.NavBarComponent],
             bootstrap: [events_app_component_1.EventsAppComponent],
-            providers: [event_service_1.EventService, toastr_service_1.ToastrService, event_route_activator_service_1.EventRouteActivator]
+            providers: [event_service_1.EventService, toastr_service_1.ToastrService, event_route_activator_service_1.EventRouteActivator,
+                {
+                    provide: 'canDeactivateCreateEvent',
+                    useValue: checkDirtyState
+                }]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;
 }());
 exports.AppModule = AppModule;
+function checkDirtyState(component) {
+    if (component.isDirty)
+        return (window.confirm('You have not saved this event,do you really want to cancel'));
+    return true;
+}
 //# sourceMappingURL=app.module.js.map

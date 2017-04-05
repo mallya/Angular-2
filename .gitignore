@@ -1,2 +1,4 @@
 
 node_modules/.bin/concurrent
+
+node_modules/.bin/concurrently
