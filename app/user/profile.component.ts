@@ -21,7 +21,8 @@ constructor(private authService: AuthService, private router: Router) {
 
 }
        ngOnInit () {
-           this.firstName = new FormControl(this.authService.currentUser.firstName, Validators.required)
+           this.firstName = new FormControl(this.authService.currentUser.firstName,[ Validators.required, 
+           Validators.pattern ('[a-zA-Z].*')])
            this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
            this.profileForm = new FormGroup ({
                firstName: this.firstName,
@@ -39,12 +40,12 @@ constructor(private authService: AuthService, private router: Router) {
        }
        }
        validateLastName() {
-          return this.lastName.invalid ||
-      this.lastName.touched
+          return this.lastName.valid ||
+      this.lastName.untouched
        }
        validateFirstName() {
-           return this.firstName.invalid ||
-      this.firstName.touched
+           return this.firstName.valid ||
+      this.firstName.untouched
        }
     
 
